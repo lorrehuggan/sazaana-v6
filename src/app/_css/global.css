@@ -1,0 +1,47 @@
+:root {
+    --color-bg: hsl(20, 14%, 4%);
+    --color-fg: hsl(60, 5%, 96%);
+
+    --color-muted: hsl(0, 0%, 45%);
+    --color-muted-dark: hsl(12, 6%, 15%);
+    --color-muted-light: hsl(24, 6%, 83%);
+
+    --color-primary: hsl(356, 95%, 58%);
+    --color-primary-dark: hsl(356, 95%, 48%);
+    --color-primary-light: hsl(356, 95%, 68%);
+
+    --color-secondary: hsl(27, 97%, 56%);
+    --color-secondary-dark: hsl(27, 97%, 46%);
+    --color-secondary-light: hsl(27, 97%, 66%);
+
+    --font-xs: 0.875rem;
+    --font-sm: 1rem;
+    --font-md: 1.618rem;
+    --font-lg: 2.618rem;
+    --font-xl: 4.236rem;
+    --font-2xl: 6.854rem;
+    --font-3xl: 11.089rem;
+    --font-4xl: 17.943rem;
+
+    --space-4xs: 0.146rem;
+    --space-3xs: 0.236rem;
+    --space-2xs: 0.382rem;
+    --space-xs: 0.618rem;
+    --space-sm: 1rem;
+    --space-md: 1.618rem;
+    --space-lg: 2.618rem;
+    --space-xl: 4.236rem;
+    --space-2xl: 6.854rem;
+    --space-3xl: 11.089rem;
+    --space-4xl: 17.943rem;
+
+    --border-radius-xs: 0.236rem;
+    --border-radius: 0.382rem;
+    --border-radius-sm: 0.618rem;
+    --border-radius-md: 1rem;
+}
+
+html {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+}
