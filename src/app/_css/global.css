@@ -2,9 +2,9 @@
     --color-bg: hsl(20, 14%, 4%);
     --color-fg: hsl(60, 5%, 96%);
 
-    --color-muted: hsl(0, 0%, 45%);
-    --color-muted-dark: hsl(12, 6%, 15%);
-    --color-muted-light: hsl(24, 6%, 83%);
+    --color-muted: hsl(0, 3%, 45%);
+    --color-muted-dark: hsl(12, 3%, 15%);
+    --color-muted-light: hsl(24, 3%, 83%);
 
     --color-primary: hsl(356, 95%, 58%);
     --color-primary-dark: hsl(356, 95%, 48%);
@@ -13,6 +13,26 @@
     --color-secondary: hsl(27, 97%, 56%);
     --color-secondary-dark: hsl(27, 97%, 46%);
     --color-secondary-light: hsl(27, 97%, 66%);
+
+    --color-tertiary: hsl(335, 91%, 22%);
+    --color-tertiary-dark: hsl(335, 91%, 12%);
+    --color-tertiary-light: hsl(335, 91%, 32%);
+
+    --color-destructive: hsl(0, 72%, 51%);
+    --color-destructive-dark: hsl(0, 72%, 41%);
+    --color-destructive-light: hsl(0, 72%, 61%);
+
+    --color-success: hsl(120, 100%, 25%);
+    --color-success-dark: hsl(120, 100%, 15%);
+    --color-success-light: hsl(120, 100%, 35%);
+
+    --color-info: hsl(210, 100%, 50%);
+    --color-info-dark: hsl(210, 100%, 40%);
+    --color-info-light: hsl(210, 100%, 60%);
+
+    --color-warning: hsl(45, 100%, 50%);
+    --color-warning-dark: hsl(45, 100%, 40%);
+    --color-warning-light: hsl(45, 100%, 60%);
 
     --font-xs: 0.875rem;
     --font-sm: 1rem;
@@ -44,4 +64,11 @@
 html {
     background-color: var(--color-bg);
     color: var(--color-fg);
+}
+
+.container {
+    max-width: 1210px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 91%;
 }
