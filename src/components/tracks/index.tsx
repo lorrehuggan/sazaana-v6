@@ -18,7 +18,7 @@ export default function Tracks({ ids }: Props) {
   const { tracks } = useTracklist({ ids });
 
   function handleOnDragEnd(result: DropResult) {
-    if (!result.destination) return;
+    // if (!result.destination) return;
     console.log(result);
   }
 
@@ -43,59 +43,111 @@ export default function Tracks({ ids }: Props) {
               <h6>{null}</h6>
             </li>
           </ul>
+          {/* <DragDropContext onDragEnd={(e) => handleOnDragEnd(e)}> */}
+          {/*   <Droppable droppableId="tracks"> */}
+          {/*     {(provided) => ( */}
+          {/*       <ul */}
+          {/*         {...provided.droppableProps} */}
+          {/*         ref={provided.innerRef} */}
+          {/*         className={style.tracks__list} */}
+          {/*       > */}
+          {/*         {tracks.map((track, i) => { */}
+          {/*           // if (!track.track.album.images[2]?.url) return null; */}
+          {/*           return ( */}
+          {/*             <Draggable */}
+          {/*               key={track.track.id} */}
+          {/*               index={i} */}
+          {/*               draggableId={track.track.id} */}
+          {/*             > */}
+          {/*               {(provided) => ( */}
+          {/* <li */}
+          {/*   {...provided.draggableProps} */}
+          {/*   ref={provided.innerRef} */}
+          {/*   className={clsx('', { */}
+          {/*     [style.tracks__list_odd]: i % 2 === 0, */}
+          {/*   })} */}
+          {/* > */}
+          {/*   <img */}
+          {/*     src={track.track.album.images[2].url} */}
+          {/*     alt={track.track.name} */}
+          {/*   /> */}
+          {/*   <div className={style.tracklist_details}> */}
+          {/*     <p>{track.track.name}</p> */}
+          {/*   </div> */}
+          {/*   <div className={style.tracklist_details}> */}
+          {/*     <p>{track.track.artists[0].name}</p> */}
+          {/*   </div> */}
+          {/*   <div> */}
+          {/*     <p>{track.track.album.name}</p> */}
+          {/*   </div> */}
+          {/*   <div */}
+          {/*     {...provided.dragHandleProps} */}
+          {/*     aria-label="drag-handle" */}
+          {/*     role="reorder tracklist" */}
+          {/*   > */}
+          {/*     <span> */}
+          {/*       <GripHorizontal size={18} /> */}
+          {/*     </span> */}
+          {/*   </div> */}
+          {/* </li> */}
+          {/*               )} */}
+          {/*             </Draggable> */}
+          {/*           ); */}
+          {/*         })} */}
+          {/*         {provided.placeholder} */}
+          {/*       </ul> */}
+          {/*     )} */}
+          {/*   </Droppable> */}
+          {/* </DragDropContext> */}
           <DragDropContext onDragEnd={(e) => handleOnDragEnd(e)}>
             <Droppable droppableId="tracklist">
               {(provided) => (
                 <ul
+                  className={style.tracks__list}
                   {...provided.droppableProps}
                   ref={provided.innerRef}
-                  className={style.tracks__list}
                 >
-                  {tracks.map((track, i) => {
-                    if (!track.track.album.images[2]?.url) return null;
-                    return (
-                      <Draggable
-                        key={track.track.id}
-                        draggableId={track.track.id}
-                        index={i}
-                      >
-                        {(provided) => {
-                          return (
-                            <li
-                              {...provided.draggableProps}
-                              ref={provided.innerRef}
-                              className={clsx('', {
-                                [style.tracks__list_odd]: i % 2 === 0,
-                              })}
-                            >
-                              <img
-                                src={track.track.album.images[2].url}
-                                alt={track.track.name}
-                              />
-                              <div className={style.tracklist_details}>
-                                <p>{track.track.name}</p>
-                              </div>
-                              <div className={style.tracklist_details}>
-                                <p>{track.track.artists[0].name}</p>
-                              </div>
-                              <div>
-                                <p>{track.track.album.name}</p>
-                              </div>
-                              <div
-                                {...provided.dragHandleProps}
-                                aria-label="drag-handle"
-                                role="reorder tracklist"
-                              >
-                                <span>
-                                  <GripHorizontal size={18} />
-                                </span>
-                              </div>
-                            </li>
-                          );
-                        }}
-                      </Draggable>
-                    );
-                  })}
+                  {tracks.map((track, i) => (
+                    <Draggable
+                      key={track.track.id}
+                      draggableId={track.track.id}
+                      index={i}
+                    >
+                      {(provided) => (
+                        <li
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          ref={provided.innerRef}
+                          className={clsx('', {
+                            [style.tracks__list_odd]: i % 2 === 0,
+                          })}
+                        >
+                          <img
+                            src={track.track.album.images[2].url}
+                            alt={track.track.name}
+                          />
+                          <div className={style.tracklist_details}>
+                            <p>{track.track.name}</p>
+                          </div>
+                          <div className={style.tracklist_details}>
+                            <p>{track.track.artists[0].name}</p>
+                          </div>
+                          <div>
+                            <p>{track.track.album.name}</p>
+                          </div>
+                          <div
+                            {...provided.dragHandleProps}
+                            aria-label="drag-handle"
+                            role="reorder tracklist"
+                          >
+                            <span>
+                              <GripHorizontal size={18} />
+                            </span>
+                          </div>
+                        </li>
+                      )}
+                    </Draggable>
+                  ))}
                   {provided.placeholder}
                 </ul>
               )}
