@@ -1,6 +1,6 @@
 'use client';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Search } from 'lucide-react';
+import { Loader2, Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { useArtistQuery } from '~/lib/queries/spotify';
@@ -59,20 +59,34 @@ export default function Query() {
 
   const handleSelect = (artist: Spotify.ArtistObjectFull) => {
     const id = artist.id;
-    router.push(`/create/${id}`);
+    router.push(`/tracks/${id}`);
+    setResults(null);
   };
 
   return (
     <section className={style.query}>
       <form onSubmit={handler}>
         <input
+          role="search for an artist"
+          aria-label="search for an artist"
           autoComplete="off"
           placeholder="Search for an artist"
           {...register('artist')}
         />
-        <button type="submit">
-          <Search size={18} />
-        </button>
+        {isPending ? (
+          <button disabled={isPending}>
+            <Loader2 size={18} className={style.query__loader} />
+          </button>
+        ) : (
+          <button
+            disabled={isSubmitting}
+            role="submit search for an artist"
+            aria-label="search submit"
+            type="submit"
+          >
+            <Search size={18} />
+          </button>
+        )}
       </form>
       {errors.artist && (
         <p

@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
-import Providers from './providers';
-
+import Hero from '~/components/hero';
 import Navigation from '~/components/navigation';
+import Particles from '~/components/particles';
+import Query from '~/components/query';
 import './_css/global.css';
 import './_css/pre.css';
+import Providers from './providers';
 
 const manrope = Manrope({ subsets: ['latin'] });
 
@@ -23,7 +25,11 @@ export default function RootLayout({
       <body className={manrope.className}>
         <Providers>
           <Navigation />
-          <main className="container">{children}</main>
+          <main className="container">
+            <Hero />
+            <Query />
+            {children}
+          </main>
         </Providers>
       </body>
     </html>

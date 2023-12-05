@@ -51,12 +51,19 @@
             &:active {
                 background-color: var(--color-muted-light);
             }
+            &:disabled {
+                cursor: not-allowed;
+                background-color: transparent;
+            }
             & svg {
                 color: var(--color-muted);
                 transition: color 0.3s ease-in-out;
                 transition-delay: 0.2s;
             }
         }
+    }
+    &__loader {
+        animation: loading 1s linear infinite;
     }
     &__error {
         color: var(--color-destructive);
@@ -125,5 +132,14 @@
                 }
             }
         }
+    }
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
