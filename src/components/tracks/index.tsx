@@ -44,7 +44,7 @@ export default function Tracks({ ids }: Props) {
             </li>
           </ul>
           <DragDropContext onDragEnd={(e) => handleOnDragEnd(e)}>
-            <Droppable droppableId="tracks">
+            <Droppable droppableId="tracklist">
               {(provided) => (
                 <ul
                   {...provided.droppableProps}
@@ -56,41 +56,43 @@ export default function Tracks({ ids }: Props) {
                     return (
                       <Draggable
                         key={track.track.id}
-                        index={i}
                         draggableId={track.track.id}
+                        index={i}
                       >
-                        {(provided) => (
-                          <li
-                            {...provided.draggableProps}
-                            ref={provided.innerRef}
-                            className={clsx('', {
-                              [style.tracks__list_odd]: i % 2 === 0,
-                            })}
-                          >
-                            <img
-                              src={track.track.album.images[2].url}
-                              alt={track.track.name}
-                            />
-                            <div className={style.tracklist_details}>
-                              <p>{track.track.name}</p>
-                            </div>
-                            <div className={style.tracklist_details}>
-                              <p>{track.track.artists[0].name}</p>
-                            </div>
-                            <div>
-                              <p>{track.track.album.name}</p>
-                            </div>
-                            <div>
-                              <span
+                        {(provided) => {
+                          return (
+                            <li
+                              {...provided.draggableProps}
+                              ref={provided.innerRef}
+                              className={clsx('', {
+                                [style.tracks__list_odd]: i % 2 === 0,
+                              })}
+                            >
+                              <img
+                                src={track.track.album.images[2].url}
+                                alt={track.track.name}
+                              />
+                              <div className={style.tracklist_details}>
+                                <p>{track.track.name}</p>
+                              </div>
+                              <div className={style.tracklist_details}>
+                                <p>{track.track.artists[0].name}</p>
+                              </div>
+                              <div>
+                                <p>{track.track.album.name}</p>
+                              </div>
+                              <div
                                 {...provided.dragHandleProps}
                                 aria-label="drag-handle"
                                 role="reorder tracklist"
                               >
-                                <GripHorizontal size={18} />
-                              </span>
-                            </div>
-                          </li>
-                        )}
+                                <span>
+                                  <GripHorizontal size={18} />
+                                </span>
+                              </div>
+                            </li>
+                          );
+                        }}
                       </Draggable>
                     );
                   })}
