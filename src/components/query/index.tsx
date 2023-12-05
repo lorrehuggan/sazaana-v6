@@ -89,11 +89,8 @@ export default function Query() {
         )}
       </form>
       {errors.artist && (
-        <p
-          className={style.query__error}
-        >{`${errors.artist.message}!`}</p>
+        <p className={style.query__error}>{`${errors.artist.message}!`}</p>
       )}
-      {isPending && <p>Loading...</p>}
       {results && (
         <ul ref={componentRef} className={style.query__results}>
           {results.map((artist) => {
@@ -104,10 +101,7 @@ export default function Query() {
                 key={artist.id}
                 className={style.query__results__result}
               >
-                <img
-                  src={artist.images[2].url}
-                  alt={artist.name}
-                />
+                <img src={artist.images[2].url} alt={artist.name} />
                 <div>
                   <p>{artist.name}</p>
                 </div>

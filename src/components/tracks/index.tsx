@@ -1,12 +1,14 @@
 'use client';
-import clsx from 'clsx';
-import { GripHorizontal } from 'lucide-react';
 import {
   DragDropContext,
+  DragStart,
   Draggable,
   DropResult,
   Droppable,
-} from 'react-beautiful-dnd';
+} from '@hello-pangea/dnd';
+import clsx from 'clsx';
+import { ArrowDownUp, GripHorizontal } from 'lucide-react';
+import { useState } from 'react';
 import useTracklist from '~/lib/hooks/useTracklist';
 import style from './style.module.css';
 
@@ -15,11 +17,22 @@ type Props = {
 };
 
 export default function Tracks({ ids }: Props) {
-  const { tracks } = useTracklist({ ids });
+  const { tracks, set, isLoading } = useTracklist({ ids });
+  const [draggingID, setDraggingID] = useState<string | null>(null);
 
   function handleOnDragEnd(result: DropResult) {
-    // if (!result.destination) return;
-    console.log(result);
+    if (!result.destination) return;
+    const items = Array.from(tracks);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+    set(items);
+    setDraggingID(null);
+    console.log({ end: result });
+  }
+
+  function handleOnDragStart(result: DragStart) {
+    setDraggingID(result.draggableId);
+    console.log({ start: result });
   }
 
   return (
@@ -27,24 +40,40 @@ export default function Tracks({ ids }: Props) {
       {tracks && (
         <>
           <ul className={style.tracks__header}>
-            <li>
-              <h6>Song</h6>
-            </li>
-            <li>
-              <h6>{null}</h6>
-            </li>
-            <li>
-              <h6>Artist</h6>
-            </li>
-            <li>
-              <h6>Album</h6>
-            </li>
-            <li>
-              <h6>{null}</h6>
-            </li>
+            {isLoading ? (
+              <li>
+                <h6>Loading...</h6>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <h6>Song</h6>
+                </li>
+                <li>
+                  <h6>{null}</h6>
+                </li>
+                <li>
+                  <h6>Artist</h6>
+                </li>
+                <li>
+                  <h6>Album</h6>
+                </li>
+                <li>
+                  <ArrowDownUp
+                    size={14}
+                    className={clsx('', {
+                      [style.tracks__header__arrow]: draggingID,
+                    })}
+                  />
+                </li>
+              </>
+            )}
           </ul>
-          <DragDropContext onDragEnd={(e) => handleOnDragEnd(e)}>
-            <Droppable droppableId="tracklist">
+          <DragDropContext
+            onDragStart={(e) => handleOnDragStart(e)}
+            onDragEnd={(e) => handleOnDragEnd(e)}
+          >
+            <Droppable droppableId={'droppable'}>
               {(provided) => (
                 <ul
                   className={style.tracks__list}
@@ -60,10 +89,11 @@ export default function Tracks({ ids }: Props) {
                       {(provided) => (
                         <li
                           {...provided.draggableProps}
-                          {...provided.dragHandleProps}
                           ref={provided.innerRef}
                           className={clsx('', {
                             [style.tracks__list_odd]: i % 2 === 0,
+                            [style.tracks__list_dragging]:
+                              draggingID !== track.track.id && draggingID,
                           })}
                         >
                           <img

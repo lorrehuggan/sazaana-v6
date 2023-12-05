@@ -12,6 +12,16 @@
       letter-spacing: -0.035em;
       text-transform: uppercase;
     }
+
+    & svg {
+      opacity: 0;
+      color: var(--color-muted);
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &__arrow {
+      opacity: 1 !important;
+    }
   }
   &__list {
     margin-top: 0.5rem;
@@ -48,6 +58,9 @@
     &_odd {
       background-color: hsla(0, 3%, 7%, 0.3);
     }
+    &_dragging {
+      opacity: 0.25;
+    }
 
     &::-webkit-scrollbar {
       background-color: transparent;
@@ -63,6 +76,7 @@
       grid-template-columns: 60px 1fr 1fr 1fr 30px;
       gap: 1rem;
       padding: 0.25rem;
+      transition: opacity 0.3s ease-in-out;
 
       & img {
         width: 60px;
