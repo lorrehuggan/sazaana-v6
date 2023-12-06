@@ -26,32 +26,33 @@ export default function Filter({ updateFilterConfig, filterConfig }: Props) {
 
   return (
     <div className={style.filter}>
-      <h1>Filter</h1>
       <form>
         {filters.map((filter) => (
-          <Slider.Root
-            minStepsBetweenThumbs={5}
-            key={filter}
-            className="SliderRoot"
-            defaultValue={[filterConfig[filter][0], filterConfig[filter][1]]}
-            max={1}
-            step={0.025}
-            onValueChange={(values) => handleOnChange(filter, values)}
-          >
-            <Slider.Track className="SliderTrack">
-              <Slider.Range className="SliderRange" />
-            </Slider.Track>
-            <Slider.Thumb
-              className="SliderThumb"
-              aria-label={`${filter} low`}
-              role="slider"
-            />
-            <Slider.Thumb
-              className="SliderThumb"
-              aria-label={`${filter} high`}
-              role="slider"
-            />
-          </Slider.Root>
+          <div key={filter}>
+            <label htmlFor={filter}>{filter}</label>
+            <Slider.Root
+              minStepsBetweenThumbs={5}
+              className="SliderRoot"
+              defaultValue={[filterConfig[filter][0], filterConfig[filter][1]]}
+              max={1}
+              step={0.025}
+              onValueChange={(values) => handleOnChange(filter, values)}
+            >
+              <Slider.Track className="SliderTrack">
+                <Slider.Range className="SliderRange" />
+              </Slider.Track>
+              <Slider.Thumb
+                className="SliderThumb"
+                aria-label={`${filter} low`}
+                role="slider"
+              />
+              <Slider.Thumb
+                className="SliderThumb"
+                aria-label={`${filter} high`}
+                role="slider"
+              />
+            </Slider.Root>
+          </div>
         ))}
       </form>
     </div>
