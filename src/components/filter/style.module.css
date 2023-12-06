@@ -1,0 +1,9 @@
+.filter {
+  margin-top: var(--space-sm);
+  & form {
+    margin-top: var(--space-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

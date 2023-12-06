@@ -10,6 +10,7 @@ import clsx from 'clsx';
 import { ArrowDownUp, GripHorizontal } from 'lucide-react';
 import { useState } from 'react';
 import useTracklist from '~/lib/hooks/useTracklist';
+import Filter from '../filter';
 import style from './style.module.css';
 
 type Props = {
@@ -17,7 +18,8 @@ type Props = {
 };
 
 export default function Tracks({ ids }: Props) {
-  const { tracks, set, isLoading } = useTracklist({ ids });
+  const { tracks, set, isLoading, updateFilterConfig, filterConfig } =
+    useTracklist({ ids });
   const [draggingID, setDraggingID] = useState<string | null>(null);
 
   function handleOnDragEnd(result: DropResult) {
@@ -27,18 +29,20 @@ export default function Tracks({ ids }: Props) {
     items.splice(result.destination.index, 0, reorderedItem);
     set(items);
     setDraggingID(null);
-    console.log({ end: result });
   }
 
   function handleOnDragStart(result: DragStart) {
     setDraggingID(result.draggableId);
-    console.log({ start: result });
   }
 
   return (
     <section className={style.tracks}>
       {tracks && (
         <>
+          <Filter
+            filterConfig={filterConfig}
+            updateFilterConfig={updateFilterConfig}
+          />
           <ul className={style.tracks__header}>
             {isLoading ? (
               <li>
