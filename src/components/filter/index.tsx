@@ -29,7 +29,6 @@ export default function Filter({ updateFilterConfig, filterConfig }: Props) {
       <form>
         {filters.map((filter) => (
           <div key={filter}>
-            <label htmlFor={filter}>{filter}</label>
             <Slider.Root
               minStepsBetweenThumbs={5}
               className="SliderRoot"
@@ -52,6 +51,7 @@ export default function Filter({ updateFilterConfig, filterConfig }: Props) {
                 role="slider"
               />
             </Slider.Root>
+            <label htmlFor={filter}>{filter}</label>
           </div>
         ))}
       </form>

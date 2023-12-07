@@ -1,0 +1,28 @@
+.artist {
+  margin-top: var(--space-sm);
+  & img {
+    width: var(--space-2xl);
+    height: var(--space-2xl);
+    border-radius: var(--space-2xs);
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease-out-quint;
+    &:hover {
+      filter: grayscale(0%);
+    }
+  }
+  & p {
+    margin-top: var(--space-3xs);
+    font-size: var(--font-xs);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+  &__placeholder {
+    width: var(--space-2xl);
+    height: var(--space-2xl);
+    border-radius: var(--space-2xs);
+    background-color: var(--color-muted);
+  }
+}

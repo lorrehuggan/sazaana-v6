@@ -1,57 +1,45 @@
 .hero {
-    & h1 {
-        font-size: 3.85rem;
-        font-weight: 900;
-        line-height: 1.05;
-        letter-spacing: -0.05em;
+  & h1 {
+    font-size: 3.85rem;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.05em;
 
-        & span {
-            display: inline-block;
-            background-size: 100% 100%;
-            background-position:
-                0px 0px,
-                0px 0px,
-                0px 0px,
-                0px 0px,
-                0px 0px;
-            background-image: radial-gradient(
-                    49% 81% at 45% 47%,
-                    #ffe20345 0%,
-                    #073aff00 100%
-                ),
-                radial-gradient(
-                    113% 91% at 17% -2%,
-                    #ff0049ff 1%,
-                    #ff000000 99%
-                ),
-                radial-gradient(142% 91% at 83% 7%, #ffdb00ff 1%, #ff000000 99%),
-                radial-gradient(
-                    142% 91% at -6% 74%,
-                    #ff0049ff 1%,
-                    #ff000000 99%
-                ),
-                radial-gradient(
-                    142% 91% at 111% 84%,
-                    #ff7000ff 0%,
-                    #ff0000ff 100%
-                );
-            -webkit-background-clip: text;
-            -moz-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            -moz-text-fill-color: transparent;
-        }
+    & span {
+      display: inline-block;
+      background-size: 100% 100%;
+      background-position:
+        0px 0px,
+        0px 0px,
+        0px 0px,
+        0px 0px,
+        0px 0px;
+      background-image: radial-gradient(
+          49% 81% at 45% 47%,
+          #ffe20345 0%,
+          #073aff00 100%
+        ),
+        radial-gradient(113% 91% at 17% -2%, #ff0049ff 1%, #ff000000 99%),
+        radial-gradient(142% 91% at 83% 7%, #ffdb00ff 1%, #ff000000 99%),
+        radial-gradient(142% 91% at -6% 74%, #ff0049ff 1%, #ff000000 99%),
+        radial-gradient(142% 91% at 111% 84%, #ff7000ff 0%, #ff0000ff 100%);
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-text-fill-color: transparent;
     }
+  }
 
-    & h4 {
-        font-size: 1.75rem;
-        font-weight: 700;
-        line-height: 1.25;
-        letter-spacing: -0.035em;
-        color: var(--color-muted);
-        margin-top: 0.875rem;
-        & span {
-            color: var(--color-fg);
-        }
+  & h4 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.035em;
+    color: var(--color-muted);
+    margin-top: 0.875rem;
+    & span {
+      color: var(--color-fg);
     }
+  }
 }

@@ -1,13 +1,17 @@
 'use client';
 
+import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useTracklistStore } from '~/store/tracklist';
 import { AudioFeatures } from '../../../types';
 import { standardizeData } from '../miscellaneous';
 import { useTracklistQuery } from '../queries/spotify';
 
-export default function useTracklist({ ids }: { ids: string }) {
-  const { data, isLoading, error, isSuccess } = useTracklistQuery(ids);
+export default function useTracklist() {
+  const params = useParams();
+  const { data, isLoading, error, isSuccess } = useTracklistQuery(
+    params.ids as string
+  );
   const { add, set, clear, remove, tracks } = useTracklistStore(
     (state) => state
   );

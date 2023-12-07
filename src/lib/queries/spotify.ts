@@ -25,3 +25,16 @@ export const useTracklistQuery = (ids: string) => {
     refetchOnWindowFocus: false,
   });
 };
+
+export const useGetArtist = (id: string) => {
+  return useQuery({
+    queryKey: ['get-artist', id],
+    queryFn: async () => {
+      const result = await fetch(`/api/artist/${id}`);
+      const data = await result.json();
+      return data as Spotify.ArtistObjectFull;
+    },
+    enabled: !!id,
+    refetchOnWindowFocus: false,
+  });
+};

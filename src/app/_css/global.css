@@ -1,74 +1,75 @@
 :root {
-    --color-bg: hsl(20, 14%, 4%);
-    --color-fg: hsl(60, 5%, 96%);
+  --color-bg: hsl(20, 14%, 4%);
+  --color-fg: hsl(60, 5%, 96%);
 
-    --color-muted: hsl(0, 3%, 45%);
-    --color-muted-dark: hsl(12, 3%, 15%);
-    --color-muted-light: hsl(24, 3%, 83%);
+  --color-muted: hsl(0, 3%, 45%);
+  --color-muted-dark: hsl(12, 3%, 15%);
+  --color-muted-light: hsl(24, 3%, 83%);
 
-    --color-primary: hsl(356, 95%, 58%);
-    --color-primary-dark: hsl(356, 95%, 48%);
-    --color-primary-light: hsl(356, 95%, 68%);
+  --color-primary: hsl(356, 95%, 58%);
+  --color-primary-dark: hsl(356, 95%, 48%);
+  --color-primary-light: hsl(356, 95%, 68%);
 
-    --color-secondary: hsl(27, 97%, 56%);
-    --color-secondary-dark: hsl(27, 97%, 46%);
-    --color-secondary-light: hsl(27, 97%, 66%);
+  --color-secondary: hsl(27, 97%, 56%);
+  --color-secondary-dark: hsl(27, 97%, 46%);
+  --color-secondary-light: hsl(27, 97%, 66%);
 
-    --color-tertiary: hsl(335, 91%, 22%);
-    --color-tertiary-dark: hsl(335, 91%, 12%);
-    --color-tertiary-light: hsl(335, 91%, 32%);
+  --color-tertiary: hsl(335, 91%, 22%);
+  --color-tertiary-dark: hsl(335, 91%, 12%);
+  --color-tertiary-light: hsl(335, 91%, 32%);
 
-    --color-destructive: hsl(0, 72%, 51%);
-    --color-destructive-dark: hsl(0, 72%, 41%);
-    --color-destructive-light: hsl(0, 72%, 61%);
+  --color-destructive: hsl(0, 72%, 51%);
+  --color-destructive-dark: hsl(0, 72%, 41%);
+  --color-destructive-light: hsl(0, 72%, 61%);
 
-    --color-success: hsl(120, 100%, 25%);
-    --color-success-dark: hsl(120, 100%, 15%);
-    --color-success-light: hsl(120, 100%, 35%);
+  --color-success: hsl(120, 100%, 25%);
+  --color-success-dark: hsl(120, 100%, 15%);
+  --color-success-light: hsl(120, 100%, 35%);
 
-    --color-info: hsl(210, 100%, 50%);
-    --color-info-dark: hsl(210, 100%, 40%);
-    --color-info-light: hsl(210, 100%, 60%);
+  --color-info: hsl(210, 100%, 50%);
+  --color-info-dark: hsl(210, 100%, 40%);
+  --color-info-light: hsl(210, 100%, 60%);
 
-    --color-warning: hsl(45, 100%, 50%);
-    --color-warning-dark: hsl(45, 100%, 40%);
-    --color-warning-light: hsl(45, 100%, 60%);
+  --color-warning: hsl(45, 100%, 50%);
+  --color-warning-dark: hsl(45, 100%, 40%);
+  --color-warning-light: hsl(45, 100%, 60%);
 
-    --font-xs: 0.875rem;
-    --font-sm: 1rem;
-    --font-md: 1.618rem;
-    --font-lg: 2.618rem;
-    --font-xl: 4.236rem;
-    --font-2xl: 6.854rem;
-    --font-3xl: 11.089rem;
-    --font-4xl: 17.943rem;
+  --font-2xs: 0.618rem;
+  --font-xs: 0.875rem;
+  --font-sm: 1rem;
+  --font-md: 1.618rem;
+  --font-lg: 2.618rem;
+  --font-xl: 4.236rem;
+  --font-2xl: 6.854rem;
+  --font-3xl: 11.089rem;
+  --font-4xl: 17.943rem;
 
-    --space-4xs: 0.146rem;
-    --space-3xs: 0.236rem;
-    --space-2xs: 0.382rem;
-    --space-xs: 0.618rem;
-    --space-sm: 1rem;
-    --space-md: 1.618rem;
-    --space-lg: 2.618rem;
-    --space-xl: 4.236rem;
-    --space-2xl: 6.854rem;
-    --space-3xl: 11.089rem;
-    --space-4xl: 17.943rem;
+  --space-4xs: 0.146rem;
+  --space-3xs: 0.236rem;
+  --space-2xs: 0.382rem;
+  --space-xs: 0.618rem;
+  --space-sm: 1rem;
+  --space-md: 1.618rem;
+  --space-lg: 2.618rem;
+  --space-xl: 4.236rem;
+  --space-2xl: 6.854rem;
+  --space-3xl: 11.089rem;
+  --space-4xl: 17.943rem;
 
-    --border-radius-xs: 0.236rem;
-    --border-radius: 0.382rem;
-    --border-radius-sm: 0.618rem;
-    --border-radius-md: 1rem;
+  --border-radius-xs: 0.236rem;
+  --border-radius: 0.382rem;
+  --border-radius-sm: 0.618rem;
+  --border-radius-md: 1rem;
 }
 
 html {
-    background-color: var(--color-bg);
-    color: var(--color-fg);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
 }
 
 .container {
-    max-width: 1210px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 91%;
+  max-width: 1210px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 91%;
 }

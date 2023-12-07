@@ -1,6 +1,6 @@
 .tracks {
   &__header {
-    margin-top: 1.5rem;
+    margin-top: var(--space-sm);
     display: grid;
     grid-template-columns: 60px 1fr 1fr 1fr 30px;
     gap: 1rem;
@@ -25,35 +25,9 @@
   }
   &__list {
     margin-top: 0.5rem;
-    height: calc(100vh - 30rem);
+    height: calc(100vh - 40rem);
     overflow-y: scroll;
     position: relative;
-
-    /* &_shadow-top { */
-    /*     height: 1.75rem; */
-    /*     position: absolute; */
-    /*     top: 0; */
-    /*     left: 0; */
-    /*     height: 1.75rem; */
-    /*     background: linear-gradient( */
-    /*         to bottom, */
-    /*         hsla(0, 0%, 5%, 1) 0%, */
-    /*         hsla(0, 0%, 5%, 0) 100% */
-    /*     ); */
-    /* } */
-    /**/
-    /* &_shadow-bottom { */
-    /*     height: 1.75rem; */
-    /*     position: sticky; */
-    /*     bottom: 0; */
-    /*     left: 0; */
-    /*     height: 1.75rem; */
-    /*     background: linear-gradient( */
-    /*         to top, */
-    /*         hsla(0, 0%, 5%, 1) 0%, */
-    /*         hsla(0, 0%, 5%, 0) 100% */
-    /*     ); */
-    /* } */
 
     &_odd {
       background-color: hsla(0, 3%, 7%, 0.3);
@@ -83,6 +57,11 @@
         height: 60px;
         border-radius: 0.15rem;
         object-fit: cover;
+        filter: grayscale(70%);
+        transition: filter 0.3s ease-out-quint;
+        &:hover {
+          filter: grayscale(0%);
+        }
       }
 
       & p {
@@ -135,11 +114,11 @@
           color: var(--color-muted);
           transition: color 0.3s ease-in-out;
           &:hover {
-            color: var(--color-fg);
+            color: var(--color-primary);
           }
           &:active {
             cursor: grabbing;
-            color: var(--color-fg);
+            color: var(--color-primary);
           }
         }
       }

@@ -9,7 +9,12 @@
 }
 
 .SliderTrack {
-  background-color: var(--color-muted);
+  background: linear-gradient(
+    to left,
+    hsl(356, 95%, 58%),
+    cubic-bezier(0.83, 0, 0.17, 1),
+    transparent
+  );
   position: relative;
   flex-grow: 1;
   border-radius: 9999px;
@@ -18,7 +23,7 @@
 
 .SliderRange {
   position: absolute;
-  background-color: white;
+  background-color: var(--color-muted-light);
   border-radius: 9999px;
   height: 100%;
 }

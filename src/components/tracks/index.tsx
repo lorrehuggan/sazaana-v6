@@ -8,6 +8,7 @@ import {
 } from '@hello-pangea/dnd';
 import clsx from 'clsx';
 import { ArrowDownUp, GripHorizontal } from 'lucide-react';
+import Link from 'next/link';
 import { useState } from 'react';
 import useTracklist from '~/lib/hooks/useTracklist';
 import Filter from '../filter';
@@ -19,7 +20,7 @@ type Props = {
 
 export default function Tracks({ ids }: Props) {
   const { tracks, set, isLoading, updateFilterConfig, filterConfig } =
-    useTracklist({ ids });
+    useTracklist();
   const [draggingID, setDraggingID] = useState<string | null>(null);
 
   function handleOnDragEnd(result: DropResult) {
@@ -101,6 +102,7 @@ export default function Tracks({ ids }: Props) {
                           })}
                         >
                           <img
+                            style={{ viewTransitionName: 'artist-image' }}
                             src={track.track.album.images[2].url}
                             alt={track.track.name}
                           />
@@ -108,17 +110,18 @@ export default function Tracks({ ids }: Props) {
                             <p>{track.track.name}</p>
                           </div>
                           <div className={style.tracklist_details}>
-                            <p>{track.track.artists[0].name}</p>
+                            <Link href={`/tracks/${track.track.artists[0].id}`}>
+                              <p>{track.track.artists[0].name}</p>
+                            </Link>
                           </div>
                           <div>
                             <p>{track.track.album.name}</p>
                           </div>
                           <div
-                            {...provided.dragHandleProps}
                             aria-label="drag-handle"
                             role="reorder tracklist"
                           >
-                            <span>
+                            <span {...provided.dragHandleProps}>
                               <GripHorizontal size={18} />
                             </span>
                           </div>
