@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { type UserQuery } from '~/schema/artist/query';
-import { CreatePlaylist } from '~/schema/playlist';
+import { SavePlaylist } from '~/schema/playlist';
 
 export const useArtistQuery = () => {
   return useMutation({
@@ -43,7 +43,7 @@ export const useGetArtist = (id: string) => {
 export const useSavePlaylist = () => {
   return useMutation({
     mutationKey: ['save-playlist'],
-    mutationFn: async (args: CreatePlaylist) => {
+    mutationFn: async (args: SavePlaylist) => {
       toast.promise(
         fetch(`/api/playlist/create`, {
           method: 'POST',

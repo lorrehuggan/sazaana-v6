@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const UserQuery = z.object({
+export const userQuerySchema = z.object({
   artist: z
     .string({
       invalid_type_error: 'Artist name must be a string',
@@ -15,4 +15,4 @@ export const UserQuery = z.object({
     }),
 });
 
-export type UserQuery = z.infer<typeof UserQuery>;
+export type UserQuery = z.infer<typeof userQuerySchema>;

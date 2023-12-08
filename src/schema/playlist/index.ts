@@ -1,6 +1,7 @@
 import { z } from 'zod';
+import { spotifyIDSchema } from '../spotify/schema';
 
-export const PlaylistNameSchema = z.object({
+export const savePlaylistSchema = z.object({
   name: z
     .string({
       invalid_type_error: 'Playlist name must be a string',
@@ -13,30 +14,13 @@ export const PlaylistNameSchema = z.object({
     .max(64, {
       message: 'Playlist name must be less than 64 characters long',
     }),
+  ids: spotifyIDSchema.array(),
 });
 
-export type PlaylistName = z.infer<typeof PlaylistNameSchema>;
+export type SavePlaylist = z.infer<typeof savePlaylistSchema>;
 
-export const PlaylistTrackIdSchema = z.object({
-  ids: z.string().array().nonempty(),
+export const savePlaylistFormSchema = z.object({
+  name: savePlaylistSchema.shape.name,
 });
 
-export type PlaylistTrackId = z.infer<typeof PlaylistTrackIdSchema>;
-
-export const CreatePlaylistSchema = z.object({
-  name: z
-    .string({
-      invalid_type_error: 'Playlist name must be a string',
-      description: 'Playlist name',
-      required_error: 'Playlist name is required',
-    })
-    .min(1, {
-      message: 'Playlist name must be at least 1 characters long',
-    })
-    .max(64, {
-      message: 'Playlist name must be less than 64 characters long',
-    }),
-  ids: z.string().array(),
-});
-
-export type CreatePlaylist = z.infer<typeof CreatePlaylistSchema>;
+export type SavePlaylistForm = z.infer<typeof savePlaylistFormSchema>;

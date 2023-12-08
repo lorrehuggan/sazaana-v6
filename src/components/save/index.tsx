@@ -1,11 +1,12 @@
 'use client';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Import, SaveIcon } from 'lucide-react';
+import { Import } from 'lucide-react';
 import { signIn, useSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import useTracklist from '~/lib/hooks/useTracklist';
 import { useSavePlaylist } from '~/lib/queries/spotify';
-import { PlaylistNameSchema, type PlaylistName } from '~/schema/playlist';
+import { SavePlaylistForm, savePlaylistFormSchema } from '~/schema/playlist';
+
 import style from './style.module.css';
 
 export default function Save() {
@@ -13,13 +14,12 @@ export default function Save() {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
-  } = useForm<PlaylistName>({
-    resolver: zodResolver(PlaylistNameSchema),
+    formState: { errors },
+  } = useForm<SavePlaylistForm>({
+    resolver: zodResolver(savePlaylistFormSchema),
   });
-  const { tracks, set, isLoading, updateFilterConfig, filterConfig } =
-    useTracklist();
-  const { mutate, isPending, isSuccess } = useSavePlaylist();
+  const { tracks } = useTracklist();
+  const { mutate, isPending } = useSavePlaylist();
 
   const handler = handleSubmit(async (formData) => {
     const ids = tracks.map((track) => track.track.id);

@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { accessToken } from '~/app/(api)/_config/auth/accessToken';
 import { env } from '~/lib/env/server';
 import { sortArtistsByQuery } from '~/lib/miscellaneous';
-import { UserQuery } from '~/schema/artist/query';
+import { userQuerySchema } from '~/schema/artist/query';
 
 export async function GET(request: NextApiRequest, response: NextApiResponse) {
   const url = request.url;
@@ -22,7 +22,7 @@ export async function GET(request: NextApiRequest, response: NextApiResponse) {
   }
 
   try {
-    UserQuery.parse({ artist });
+    userQuerySchema.parse({ artist });
   } catch (E) {
     if (E instanceof z.ZodError) {
       return new Response(E.errors[0].message, {

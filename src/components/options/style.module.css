@@ -1,5 +1,5 @@
 .options {
-  width: 350px;
+  width: 22%;
   & h6 {
     color: var(--color-muted-dark);
     font-size: 0.75rem;

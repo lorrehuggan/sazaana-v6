@@ -11,14 +11,9 @@ import { ArrowDownUp, GripHorizontal } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import useTracklist from '~/lib/hooks/useTracklist';
-import Filter from '../filter';
 import style from './style.module.css';
 
-type Props = {
-  ids: string;
-};
-
-export default function Tracks({ ids }: Props) {
+export default function Tracks() {
   const { tracks, set, isLoading, updateFilterConfig, filterConfig } =
     useTracklist();
   const [draggingID, setDraggingID] = useState<string | null>(null);
@@ -38,12 +33,13 @@ export default function Tracks({ ids }: Props) {
 
   return (
     <section className={style.tracks}>
+      {!tracks && isLoading && (
+        <div className={style.tracks__loading}>
+          <h6>Loading...</h6>
+        </div>
+      )}
       {tracks && (
         <>
-          {/* <Filter */}
-          {/*   filterConfig={filterConfig} */}
-          {/*   updateFilterConfig={updateFilterConfig} */}
-          {/* /> */}
           <ul className={style.tracks__header}>
             {isLoading ? (
               <li>

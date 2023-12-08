@@ -10,7 +10,7 @@ export default function Page({ params }: { params: { ids: string } }) {
       <Artist id={params.ids} />
       <div className={style.container}>
         <Options />
-        <Tracks ids={params.ids} />
+        <Tracks />
       </div>
     </>
   );

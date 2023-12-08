@@ -13,7 +13,7 @@ const queryClient = new QueryClient();
 export default function Providers({ children }: Props) {
   return (
     <QueryClientProvider client={queryClient}>
-      <Toaster richColors position="top-center" />
+      <Toaster invert richColors position="top-center" />
       <SessionProvider>{children}</SessionProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useArtistQuery } from '~/lib/queries/spotify';
-import { UserQuery } from '~/schema/artist/query';
+import { UserQuery, userQuerySchema } from '~/schema/artist/query';
 
 import style from './style.module.css';
 
@@ -16,7 +16,7 @@ export default function Query() {
     reset,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<UserQuery>({
-    resolver: zodResolver(UserQuery),
+    resolver: zodResolver(userQuerySchema),
   });
   const { mutate, data, isPending } = useArtistQuery();
   const router = useRouter();
