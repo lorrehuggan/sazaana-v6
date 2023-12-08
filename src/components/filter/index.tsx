@@ -1,17 +1,24 @@
+'use client';
 import * as Slider from '@radix-ui/react-slider';
 
 import style from './style.module.css';
 
+import { FilterIcon } from 'lucide-react';
 import { useMemo } from 'react';
+import useTracklist from '~/lib/hooks/useTracklist';
 import { AudioFeatures } from '../../../types';
 import './style.css';
 
-type Props = {
-  updateFilterConfig: (feature: string, min: number, max: number) => void;
-  filterConfig: AudioFeatures;
-};
+export default function Filter() {
+  const { updateFilterConfig, filterConfig } = useTracklist();
 
-export default function Filter({ updateFilterConfig, filterConfig }: Props) {
+  const attribute = {
+    acousticness: ['Cyber Strings', 'Earth Tunes'],
+    danceability: ['Rigid Robotica', 'Groove Grove'],
+    energy: ['Serenity Stream', 'Volcano Vibe'],
+    valence: ['Mellow Shadows', 'Sunshine Melody'],
+  };
+
   const filters = useMemo(() => {
     return Object.keys(filterConfig) as (keyof AudioFeatures)[];
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -26,9 +33,14 @@ export default function Filter({ updateFilterConfig, filterConfig }: Props) {
 
   return (
     <div className={style.filter}>
+      <div className={style.filter__heading}>
+        <p>Track filters</p>
+        <FilterIcon size={14} />
+      </div>
       <form>
         {filters.map((filter) => (
           <div key={filter}>
+            <label htmlFor={filter}>{filter}</label>
             <Slider.Root
               minStepsBetweenThumbs={5}
               className="SliderRoot"
@@ -51,7 +63,10 @@ export default function Filter({ updateFilterConfig, filterConfig }: Props) {
                 role="slider"
               />
             </Slider.Root>
-            <label htmlFor={filter}>{filter}</label>
+            <section className={style.filter__attributes}>
+              <span>{attribute[filter][0]}</span>
+              <span>{attribute[filter][1]}</span>
+            </section>
           </div>
         ))}
       </form>

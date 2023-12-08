@@ -2,11 +2,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2, Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useArtistQuery } from '~/lib/queries/spotify';
 import { UserQuery } from '~/schema/artist/query';
 
-import { useEffect, useRef, useState } from 'react';
 import style from './style.module.css';
 
 export default function Query() {

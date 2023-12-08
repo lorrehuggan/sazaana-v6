@@ -1,11 +1,17 @@
 import Artist from '~/components/artist';
+import Options from '~/components/options';
 import Tracks from '~/components/tracks';
+
+import style from './page.module.css';
 
 export default function Page({ params }: { params: { ids: string } }) {
   return (
-    <div>
+    <>
       <Artist id={params.ids} />
-      <Tracks ids={params.ids} />
-    </div>
+      <div className={style.container}>
+        <Options />
+        <Tracks ids={params.ids} />
+      </div>
+    </>
   );
 }

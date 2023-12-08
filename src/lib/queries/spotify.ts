@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { z } from 'zod';
+import { toast } from 'sonner';
 import { type UserQuery } from '~/schema/artist/query';
+import { CreatePlaylist } from '~/schema/playlist';
 
 export const useArtistQuery = () => {
   return useMutation({
@@ -36,5 +37,31 @@ export const useGetArtist = (id: string) => {
     },
     enabled: !!id,
     refetchOnWindowFocus: false,
+  });
+};
+
+export const useSavePlaylist = () => {
+  return useMutation({
+    mutationKey: ['save-playlist'],
+    mutationFn: async (args: CreatePlaylist) => {
+      toast.promise(
+        fetch(`/api/playlist/create`, {
+          method: 'POST',
+          body: JSON.stringify(args),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }),
+        {
+          loading: `Saving ${args.name}...`,
+          success: () => {
+            return `${args.name} saved!`;
+          },
+          error: () => {
+            return 'Failed to save playlist';
+          },
+        }
+      );
+    },
   });
 };

@@ -1,22 +1,44 @@
 .filter {
   margin-top: var(--space-sm);
-  & form {
-    margin-top: var(--space-sm);
+  &__heading {
     display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    & p {
+      font-size: var(--font-xs);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+    }
+  }
+  & form {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     & div {
       display: flex;
-      justify-content: center;
       flex-direction: column;
-      align-items: center;
+      width: 100%;
     }
     & label {
       text-transform: capitalize;
       font-weight: 600;
-      color: var(--color-muted);
-      text-align: center;
+      color: var(--color-muted-light);
       font-size: var(--font-xs);
+      margin-top: var(--space-xs);
+    }
+  }
+  &__attributes {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    & span {
+      font-size: var(--font-2xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-muted);
     }
   }
 }

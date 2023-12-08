@@ -40,10 +40,10 @@ export default function Tracks({ ids }: Props) {
     <section className={style.tracks}>
       {tracks && (
         <>
-          <Filter
-            filterConfig={filterConfig}
-            updateFilterConfig={updateFilterConfig}
-          />
+          {/* <Filter */}
+          {/*   filterConfig={filterConfig} */}
+          {/*   updateFilterConfig={updateFilterConfig} */}
+          {/* /> */}
           <ul className={style.tracks__header}>
             {isLoading ? (
               <li>
