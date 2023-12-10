@@ -60,6 +60,17 @@
   --border-radius: 0.382rem;
   --border-radius-sm: 0.618rem;
   --border-radius-md: 1rem;
+
+  --media-xxs: 320px;
+  --media-xs: 480px;
+  --media-sm: 576px;
+  --media-md: 768px;
+  --media-lg: 992px;
+  --media-xl: 1200px;
+  --media-2xl: 1400px;
+  --media-3xl: 1600px;
+  --media-4xl: 1800px;
+  --media-5xl: 2000px;
 }
 
 html {

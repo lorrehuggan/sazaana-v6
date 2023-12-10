@@ -7,4 +7,7 @@
     letter-spacing: -0.035em;
     text-transform: uppercase;
   }
+  @container tracks (width <= 768px) {
+    display: none;
+  }
 }

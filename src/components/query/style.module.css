@@ -49,10 +49,14 @@
       width: 100%;
       height: 100%;
       border: none;
+      font-size: var(--font-xs);
       outline: none;
       background-color: transparent;
       color: var(--color-fg);
       padding: var(--space-sm) 0;
+      @media (width >= 768px) {
+        font-size: var(--font-sm);
+      }
       &::placeholder {
         color: var(--color-muted);
         transition: opacity 0.2s ease-in-out;

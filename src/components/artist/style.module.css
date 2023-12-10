@@ -1,12 +1,16 @@
 .artist {
   margin-top: var(--space-sm);
   & img {
-    width: var(--space-2xl);
-    height: var(--space-2xl);
+    width: var(--space-xl);
+    height: var(--space-xl);
     border-radius: var(--space-2xs);
     object-fit: cover;
     filter: grayscale(100%);
     transition: filter 0.3s ease-out-quint;
+    @media (width >= 768px) {
+      width: var(--space-2xl);
+      height: var(--space-2xl);
+    }
     &:hover {
       filter: grayscale(0%);
     }

@@ -3,10 +3,12 @@ import * as Slider from '@radix-ui/react-slider';
 
 import style from './style.module.css';
 
-import { FilterIcon } from 'lucide-react';
+import * as Toggle from '@radix-ui/react-toggle';
+import { FilterIcon, Move } from 'lucide-react';
 import { useMemo } from 'react';
 import useTracklist from '~/lib/hooks/useTracklist';
 import { AudioFeatures } from '../../../types';
+
 import './style.css';
 
 export default function Filter() {
@@ -36,6 +38,11 @@ export default function Filter() {
       <div className={style.filter__heading}>
         <p>Track filters</p>
         <FilterIcon size={14} />
+      </div>
+      <div className={style.filter__sort}>
+        <Toggle.Root className="Toggle" aria-label="Toggle danceability">
+          <Move size={16} />
+        </Toggle.Root>
       </div>
       <form>
         {filters.map((filter) => (

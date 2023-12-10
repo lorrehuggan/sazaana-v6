@@ -1,9 +1,12 @@
 .hero {
   & h1 {
-    font-size: 3.85rem;
+    font-size: var(--font-lg);
     font-weight: 900;
     line-height: 1.05;
     letter-spacing: -0.05em;
+    @media (width >= 768px) {
+      font-size: var(--font-xl);
+    }
 
     & span {
       display: inline-block;
@@ -32,12 +35,15 @@
   }
 
   & h4 {
-    font-size: 1.75rem;
+    font-size: var(--font-md);
     font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: -0.035em;
+    line-height: 1.05;
+    letter-spacing: -0.05em;
     color: var(--color-muted);
     margin-top: 0.875rem;
+    @media (width >= 768px) {
+      font-size: var(--font-md);
+    }
     & span {
       color: var(--color-fg);
     }
