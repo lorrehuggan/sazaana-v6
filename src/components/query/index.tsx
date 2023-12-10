@@ -50,7 +50,26 @@ export default function Query() {
     };
   }, [componentRef]);
 
-  const handler = handleSubmit(async (formData) => {
+  useEffect(() => {
+    // listen for enter key event and submit form
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Enter') {
+        handleSubmit((formData) => {
+          if (isSubmitSuccessful) {
+            mutate(formData);
+            reset();
+          }
+        })();
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handler = handleSubmit((formData) => {
     if (isSubmitSuccessful) {
       mutate(formData);
       reset();

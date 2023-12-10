@@ -74,7 +74,7 @@ export default function Tracks() {
             onDragStart={(e) => handleOnDragStart(e)}
             onDragEnd={(e) => handleOnDragEnd(e)}
           >
-            <Droppable droppableId={'droppable'}>
+            <Droppable droppableId={'tracklist'}>
               {(provided) => (
                 <ul
                   className={style.tracks__list}

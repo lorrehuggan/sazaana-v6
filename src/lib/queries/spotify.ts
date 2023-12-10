@@ -14,15 +14,15 @@ export const useArtistQuery = () => {
   });
 };
 
-export const useTracklistQuery = (ids: string) => {
+export const useTracklistQuery = (ids: string, config: string) => {
   return useQuery({
-    queryKey: ['tracklist-query', ids],
+    queryKey: ['tracklist-query', ids, config],
     queryFn: async () => {
-      const result = await fetch(`/api/artist/curated/${ids}`);
+      const result = await fetch(`/api/artist/recommended/${ids}?${config}`);
       const data = await result.json();
       return data as Spotify.TrackWithFeatures[];
     },
-    enabled: !!ids,
+    enabled: !!ids && !!config,
     refetchOnWindowFocus: false,
   });
 };

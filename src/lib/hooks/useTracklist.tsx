@@ -9,19 +9,19 @@ import { useTracklistQuery } from '../queries/spotify';
 
 export default function useTracklist() {
   const params = useParams();
-  const { data, isLoading, error, isSuccess } = useTracklistQuery(
-    params.ids as string
-  );
   const { add, set, clear, remove, tracks } = useTracklistStore(
     (state) => state
   );
-
   const [filterConfig, setFilterConfig] = useState<AudioFeatures>({
     acousticness: [0, 1],
     danceability: [0, 1],
     energy: [0, 1],
     valence: [0, 1],
   });
+  const { data, isLoading, error, isSuccess } = useTracklistQuery(
+    params.ids as string,
+    `min_acousticness=${filterConfig.acousticness[0]}&max_acousticness=${filterConfig.acousticness[1]}&min_danceability=${filterConfig.danceability[0]}&max_danceability=${filterConfig.danceability[1]}&min_energy=${filterConfig.energy[0]}&max_energy=${filterConfig.energy[1]}&min_valence=${filterConfig.valence[0]}&max_valence=${filterConfig.valence[1]}`
+  );
 
   useEffect(() => {
     if (data) {

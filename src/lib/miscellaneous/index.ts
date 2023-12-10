@@ -43,3 +43,23 @@ export const standardizeData = (track: Spotify.AudioFeaturesObject) => {
     valence: Number(Math.max(0, Math.min(1, track.valence)).toFixed(2)),
   };
 };
+
+export function debounce<F extends (...args: any[]) => void>(
+  func: F,
+  delay: number
+): (...args: Parameters<F>) => void {
+  let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+  return function(...args: Parameters<F>) {
+    const later = () => {
+      timeoutId = null;
+      func(...args);
+    };
+
+    if (timeoutId !== null) {
+      clearTimeout(timeoutId);
+    }
+
+    timeoutId = setTimeout(later, delay);
+  };
+}

@@ -5,7 +5,7 @@ import style from './style.module.css';
 
 import * as Toggle from '@radix-ui/react-toggle';
 import { FilterIcon, Move } from 'lucide-react';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import useTracklist from '~/lib/hooks/useTracklist';
 import { AudioFeatures } from '../../../types';
 
@@ -13,6 +13,7 @@ import './style.css';
 
 export default function Filter() {
   const { updateFilterConfig, filterConfig } = useTracklist();
+  const [value, setValue] = useState(['', [0, 1]]);
 
   const attribute = {
     acousticness: ['Cyber Strings', 'Earth Tunes'],
@@ -26,11 +27,15 @@ export default function Filter() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function handleOnChange(
-    feature: keyof AudioFeatures,
-    values: readonly number[]
-  ) {
-    updateFilterConfig(feature, values[0], values[1]);
+  function handleOnChange(feature: keyof AudioFeatures, values: number[]) {
+    setValue([feature, values]);
+  }
+
+  function handleOnPointerUp() {
+    const feature = String(value[0]);
+    const value1 = Number(value[1][0]);
+    const value2 = Number(value[1][1]);
+    updateFilterConfig(feature, value1, value2);
   }
 
   return (
@@ -60,11 +65,13 @@ export default function Filter() {
                 <Slider.Range className="SliderRange" />
               </Slider.Track>
               <Slider.Thumb
+                onPointerUp={handleOnPointerUp}
                 className="SliderThumb"
                 aria-label={`${filter} low`}
                 role="slider"
               />
               <Slider.Thumb
+                onPointerUp={handleOnPointerUp}
                 className="SliderThumb"
                 aria-label={`${filter} high`}
                 role="slider"
