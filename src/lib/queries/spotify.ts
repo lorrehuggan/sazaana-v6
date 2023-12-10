@@ -24,6 +24,7 @@ export const useTracklistQuery = (ids: string, config: string) => {
     },
     enabled: !!ids && !!config,
     refetchOnWindowFocus: false,
+    staleTime: Infinity,
   });
 };
 

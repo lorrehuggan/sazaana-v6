@@ -9,19 +9,41 @@
   &__heading {
     display: grid;
     grid-template-columns: 50px 1fr 1fr 30px;
-    padding-right: 16px;
+    padding-right: 0.25rem;
     gap: var(--space-xs);
   }
   &__songs {
     overflow-y: scroll;
     height: 600px;
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 0.25rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        hsl(0, 3%, 45%) 50%,
+        transparent 100%
+      );
+      border-radius: var(--border-radius);
+      cursor: grab;
+      &:active {
+        cursor: grabbing;
+      }
+    }
   }
   &__song {
     display: grid;
     grid-template-columns: 50px 1fr 1fr 30px;
     gap: var(--space-xs);
-    background-color: var(--color-muted-darker);
     margin-bottom: var(--space-xs);
+    background-color: transparent;
+    transition: background-color 0.2s ease-in-out;
+    &:hover {
+      background-color: var(--color-muted-darker);
+    }
     & img {
       width: 50px;
       height: 50px;
@@ -83,6 +105,10 @@
       align-items: center;
       justify-content: center;
       cursor: grab;
+      transition: color 0.2s ease-in-out;
+      &:hover {
+        color: var(--color-primary);
+      }
       &:active {
         cursor: grabbing;
       }

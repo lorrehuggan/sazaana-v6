@@ -16,6 +16,7 @@ import style from './style.module.css';
 export default function Tracks() {
   const { tracks, set, isLoading, updateFilterConfig, filterConfig } =
     useTracklist();
+
   const [draggingID, setDraggingID] = useState<string | null>(null);
 
   function handleOnDragEnd(result: DropResult) {
@@ -51,38 +52,66 @@ export default function Tracks() {
         </ul>
       )}
       {tracks.length > 0 && (
-        <ul className={style.tracks__songs}>
-          {tracks.map((track, index) => (
-            <li key={track.track.id} className={style.tracks__song}>
-              <img
-                src={track.track.album.images[2].url}
-                alt={track.track.name}
-              />
-              <div className={style.tracks__song_details}>
-                <p>{track.track.name}</p>
-                <div>
-                  {!track.track.explicit && (
-                    <div className={style.tracks__song_explicit}>
-                      <p>E</p>
-                    </div>
-                  )}
-                  {track.track.artists.map((artist, index, array) => (
-                    <span key={artist.id}>
-                      {artist.name}
-                      {index < array.length - 1 ? ', ' : ''}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className={style.tracks__song_album}>
-                <p>{track.track.album.name}</p>
-              </div>
-              <div className={style.tracks__song_handle}>
-                <GripHorizontal size={16} />
-              </div>
-            </li>
-          ))}
-        </ul>
+        <DragDropContext
+          onDragEnd={handleOnDragEnd}
+          onDragStart={handleOnDragStart}
+        >
+          <Droppable droppableId="droppable">
+            {(provided) => (
+              <ul
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+                className={style.tracks__songs}
+              >
+                {tracks.map((track, index) => (
+                  <Draggable
+                    key={track.track.id}
+                    draggableId={track.track.id}
+                    index={index}
+                  >
+                    {(provided) => (
+                      <li
+                        {...provided.draggableProps}
+                        ref={provided.innerRef}
+                        className={style.tracks__song}
+                      >
+                        <img
+                          src={track.track.album.images[2].url}
+                          alt={track.track.name}
+                        />
+                        <div className={style.tracks__song_details}>
+                          <p>{track.track.name}</p>
+                          <div>
+                            {!track.track.explicit && (
+                              <div className={style.tracks__song_explicit}>
+                                <p>E</p>
+                              </div>
+                            )}
+                            {track.track.artists.map((artist, index, array) => (
+                              <span key={artist.id}>
+                                {artist.name}
+                                {index < array.length - 1 ? ', ' : ''}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        <div className={style.tracks__song_album}>
+                          <p>{track.track.album.name}</p>
+                        </div>
+                        <div className={style.tracks__song_handle}>
+                          <span {...provided.dragHandleProps}>
+                            <GripHorizontal size={18} />
+                          </span>
+                        </div>
+                      </li>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+        </DragDropContext>
       )}
     </section>
   );

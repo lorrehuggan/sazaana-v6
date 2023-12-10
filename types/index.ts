@@ -8,3 +8,7 @@ export type AudioFeatures = {
   energy: number[];
   valence: number[];
 };
+
+export type Result<T> =
+  | { kind: 'success'; data: T; status: number }
+  | { kind: 'error'; error: string; status: number };

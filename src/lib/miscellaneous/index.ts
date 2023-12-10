@@ -1,4 +1,5 @@
 import * as levenshtein from 'fast-levenshtein';
+import { Result } from '../../../types';
 
 export const sortArtistsByQuery = (
   artists: Spotify.ArtistObjectFull[],
@@ -62,4 +63,14 @@ export function debounce<F extends (...args: any[]) => void>(
 
     timeoutId = setTimeout(later, delay);
   };
+}
+
+export function handleResult<T>(result: Result<T>) {
+  if (result.kind === 'success') {
+    // Handle success
+    return result.data;
+  } else {
+    // Handle error
+    return result.error;
+  }
 }
