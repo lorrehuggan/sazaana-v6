@@ -1,9 +1,4 @@
 .container {
   display: flex;
   gap: var(--space-sm);
-  container-type: inline-size;
-  container-name: tracks;
-  > * > * {
-    margin-top: var(--space-md);
-  }
 }
