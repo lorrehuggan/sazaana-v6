@@ -1,133 +1,90 @@
 .tracks {
-  flex: 1;
-  &__header {
-    display: grid;
-    grid-template-columns: 60px 1fr 1fr 1fr 30px;
-    gap: 1rem;
-    padding-right: 1.5px;
-
-    & h6 {
-      color: var(--color-muted-dark);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: -0.035em;
-      text-transform: uppercase;
-    }
-
-    & svg {
-      opacity: 0;
-      color: var(--color-muted);
-      transition: opacity 0.3s ease-in-out;
-    }
-
-    &__arrow {
-      opacity: 1 !important;
-    }
+  width: 100%;
+  & h6 {
+    font-size: var(--font-2xs);
+    font-weight: 600;
+    color: var(--color-muted-dark);
+    text-transform: uppercase;
   }
-  &__list {
-    margin-top: var(--space-sm);
-    height: calc(100vh - 40rem);
+  &__heading {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 30px;
+    padding-right: 16px;
+    gap: var(--space-xs);
+  }
+  &__songs {
     overflow-y: scroll;
-    position: relative;
-
-    &_odd {
-      background-color: hsla(0, 3%, 7%, 0.3);
+    height: 600px;
+  }
+  &__song {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 30px;
+    gap: var(--space-xs);
+    background-color: var(--color-muted-darker);
+    margin-bottom: var(--space-xs);
+    & img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
     }
-    &_dragging {
-      opacity: 0.25;
-    }
-
-    &::-webkit-scrollbar {
-      background-color: transparent;
-      width: 0.25rem;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        hsl(0, 3%, 45%) 50%,
-        transparent 100%
-      );
-      border-radius: var(--border-radius);
-      cursor: grab;
-      &:active {
-        cursor: grabbing;
-      }
-    }
-
-    & li {
-      display: grid;
-      grid-template-columns: 60px 1fr 1fr 1fr 30px;
-      gap: 1rem;
-      transition: opacity 0.3s ease-in-out;
-      margin-bottom: 0.5rem;
-
-      & img {
-        width: 60px;
-        height: 60px;
-        border-radius: var(--border-radius);
-        object-fit: cover;
-        transition: filter 0.3s ease-out-quint;
-      }
-
+    &_details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-2xs);
       & p {
-        color: var(--color-muted);
+        font-size: var(--font-xs);
+        font-weight: 600;
         overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
-        font-size: 0.875rem;
-        transition: all 0.3s ease-in-out;
       }
-
-      & :nth-child(2) {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        & p {
-          color: var(--color-foreground);
-        }
-      }
-
-      & :nth-child(3) {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        & p {
-          cursor: pointer;
-          &:hover {
-            text-decoration: underline;
-            color: var(--color-fg);
-          }
-        }
-      }
-
-      & :nth-child(4) {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      & :nth-child(5) {
+      & div {
         display: flex;
         align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        & svg {
-          cursor: grab;
+        gap: var(--space-2xs);
+        & span {
+          font-size: var(--font-2xs);
           color: var(--color-muted);
-          transition: color 0.3s ease-in-out;
-          &:hover {
-            color: var(--color-primary);
-          }
-          &:active {
-            cursor: grabbing;
-            color: var(--color-primary);
-          }
+          font-weight: 600;
         }
+      }
+    }
+    &_explicit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 18px;
+      width: 18px;
+      background-color: var(--color-muted);
+      border-radius: 2px;
+      & p {
+        font-size: var(--font-2xs);
+        font-weight: 600;
+        color: var(--color-fg) !important;
+        line-height: 1;
+      }
+    }
+    &_album {
+      display: flex;
+      align-items: center;
+      & p {
+        font-size: var(--font-xs);
+        font-weight: 600;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+      }
+    }
+    &_handle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+      &:active {
+        cursor: grabbing;
       }
     }
   }

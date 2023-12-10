@@ -4,6 +4,7 @@
 
   --color-muted: hsl(0, 3%, 45%);
   --color-muted-dark: hsl(12, 3%, 15%);
+  --color-muted-darker: hsla(0, 3%, 10%, 0.2);
   --color-muted-light: hsl(24, 3%, 63%);
 
   --color-primary: hsl(356, 95%, 58%);
@@ -34,7 +35,7 @@
   --color-warning-dark: hsl(45, 100%, 40%);
   --color-warning-light: hsl(45, 100%, 60%);
 
-  --font-2xs: 0.618rem;
+  --font-2xs: 0.75rem;
   --font-xs: 0.875rem;
   --font-sm: 1rem;
   --font-md: 1.618rem;

@@ -43,35 +43,35 @@ export async function GET(
     new URL(`https://api.spotify.com/v1/audio-features?ids=${ids}`).toString();
 
   try {
-    const token = await accessToken();
-    const recommendedResponse = await fetch(GET_RECOMMENDED_TRACKS_URL, {
-      method: 'GET',
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    const recommended = await recommendedResponse.json();
-    const trackIDs = recommended.tracks.map((track: any) => track.id);
-    const audioFeaturesResponse = await fetch(
-      GET_AUDIO_FEATURES_URL(trackIDs),
-      {
-        method: 'GET',
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    const audioFeatures = await audioFeaturesResponse.json();
-    const tracksWithFeatures = recommended.tracks.map((track: any) => {
-      const features = audioFeatures.audio_features.find(
-        (f: any) => f.id === track.id
-      );
-      return {
-        track: { ...track },
-        audioFeatures: features,
-      };
-    });
-    // let tracksWithFeatures = mockdata;
+    // const token = await accessToken();
+    // const recommendedResponse = await fetch(GET_RECOMMENDED_TRACKS_URL, {
+    //   method: 'GET',
+    //   headers: {
+    //     authorization: `Bearer ${token}`,
+    //   },
+    // });
+    // const recommended = await recommendedResponse.json();
+    // const trackIDs = recommended.tracks.map((track: any) => track.id);
+    // const audioFeaturesResponse = await fetch(
+    //   GET_AUDIO_FEATURES_URL(trackIDs),
+    //   {
+    //     method: 'GET',
+    //     headers: {
+    //       authorization: `Bearer ${token}`,
+    //     },
+    //   }
+    // );
+    // const audioFeatures = await audioFeaturesResponse.json();
+    // const tracksWithFeatures = recommended.tracks.map((track: any) => {
+    //   const features = audioFeatures.audio_features.find(
+    //     (f: any) => f.id === track.id
+    //   );
+    //   return {
+    //     track: { ...track },
+    //     audioFeatures: features,
+    //   };
+    // });
+    let tracksWithFeatures = mockdata;
     return NextResponse.json(tracksWithFeatures, {
       status: 200,
     });

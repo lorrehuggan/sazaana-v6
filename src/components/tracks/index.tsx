@@ -33,104 +33,56 @@ export default function Tracks() {
 
   return (
     <section className={style.tracks}>
-      {!tracks && isLoading && (
-        <div className={style.tracks__loading}>
-          <h6>Loading...</h6>
-        </div>
+      {isLoading && <h6>Loading...</h6>}
+      {!isLoading && (
+        <ul className={style.tracks__heading}>
+          <li>
+            <h6>Song</h6>
+          </li>
+          <li>
+            <h6>{null}</h6>
+          </li>
+          <li>
+            <h6>Album</h6>
+          </li>
+          <li>
+            <h6>{null}</h6>
+          </li>
+        </ul>
       )}
-      {tracks && (
-        <>
-          <ul className={style.tracks__header}>
-            {isLoading ? (
-              <li>
-                <h6>Loading...</h6>
-              </li>
-            ) : (
-              <>
-                <li>
-                  <h6>Song</h6>
-                </li>
-                <li>
-                  <h6>{null}</h6>
-                </li>
-                <li>
-                  <h6>Artist</h6>
-                </li>
-                <li>
-                  <h6>Album</h6>
-                </li>
-                <li>
-                  <ArrowDownUp
-                    size={14}
-                    className={clsx('', {
-                      [style.tracks__header__arrow]: draggingID,
-                    })}
-                  />
-                </li>
-              </>
-            )}
-          </ul>
-          <DragDropContext
-            onDragStart={(e) => handleOnDragStart(e)}
-            onDragEnd={(e) => handleOnDragEnd(e)}
-          >
-            <Droppable droppableId={'tracklist'}>
-              {(provided) => (
-                <ul
-                  className={style.tracks__list}
-                  {...provided.droppableProps}
-                  ref={provided.innerRef}
-                >
-                  {tracks.map((track, i) => (
-                    <Draggable
-                      key={track.track.id}
-                      draggableId={track.track.id}
-                      index={i}
-                    >
-                      {(provided) => (
-                        <li
-                          {...provided.draggableProps}
-                          ref={provided.innerRef}
-                          className={clsx('', {
-                            [style.tracks__list_odd]: i % 2 === 0,
-                            [style.tracks__list_dragging]:
-                              draggingID !== track.track.id && draggingID,
-                          })}
-                        >
-                          <img
-                            style={{ viewTransitionName: 'artist-image' }}
-                            src={track.track.album.images[2].url}
-                            alt={track.track.name}
-                          />
-                          <div className={style.tracklist_details}>
-                            <p>{track.track.name}</p>
-                          </div>
-                          <div className={style.tracklist_details}>
-                            <Link href={`/tracks/${track.track.artists[0].id}`}>
-                              <p>{track.track.artists[0].name}</p>
-                            </Link>
-                          </div>
-                          <div>
-                            <p>{track.track.album.name}</p>
-                          </div>
-                          <div
-                            aria-label="drag-handle"
-                            role="reorder tracklist"
-                          >
-                            <span {...provided.dragHandleProps}>
-                              <GripHorizontal size={18} />
-                            </span>
-                          </div>
-                        </li>
-                      )}
-                    </Draggable>
+      {tracks.length > 0 && (
+        <ul className={style.tracks__songs}>
+          {tracks.map((track, index) => (
+            <li key={track.track.id} className={style.tracks__song}>
+              <img
+                src={track.track.album.images[2].url}
+                alt={track.track.name}
+              />
+              <div className={style.tracks__song_details}>
+                <p>{track.track.name}</p>
+                <div>
+                  {!track.track.explicit && (
+                    <div className={style.tracks__song_explicit}>
+                      <p>E</p>
+                    </div>
+                  )}
+                  {track.track.artists.map((artist, index, array) => (
+                    <span key={artist.id}>
+                      {artist.name}
+                      {index < array.length - 1 ? ', ' : ''}
+                    </span>
                   ))}
-                  {provided.placeholder}
-                </ul>
-              )}
-            </Droppable>
-          </DragDropContext>
-        </>
+                </div>
+              </div>
+              <div className={style.tracks__song_album}>
+                <p>{track.track.album.name}</p>
+              </div>
+              <div className={style.tracks__song_handle}>
+                <GripHorizontal size={16} />
+              </div>
+            </li>
+          ))}
+        </ul>
       )}
     </section>
   );
