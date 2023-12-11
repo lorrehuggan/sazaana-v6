@@ -13,8 +13,9 @@
     gap: var(--space-xs);
   }
   &__songs {
-    overflow-y: scroll;
-    height: 600px;
+    /* overflow-y: scroll; */
+    /* height: 600px; */
+    margin-top: var(--space-sm);
     &::-webkit-scrollbar {
       background-color: transparent;
       width: 0.25rem;
@@ -34,6 +35,9 @@
       }
     }
   }
+  &__dragging {
+    opacity: 0.2;
+  }
   &__song {
     display: grid;
     grid-template-columns: 50px 1fr 1fr 30px;
@@ -48,6 +52,7 @@
       width: 50px;
       height: 50px;
       object-fit: cover;
+      border-radius: 2px;
     }
     &_details {
       display: flex;
@@ -70,6 +75,10 @@
           font-size: var(--font-2xs);
           color: var(--color-muted);
           font-weight: 600;
+          cursor: pointer;
+          &:hover {
+            color: var(--color-primary);
+          }
         }
       }
     }
@@ -104,13 +113,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: grab;
-      transition: color 0.2s ease-in-out;
-      &:hover {
-        color: var(--color-primary);
-      }
-      &:active {
-        cursor: grabbing;
+      & span {
+        cursor: grab;
+        transition: color 0.2s ease-in-out;
+        &:hover {
+          color: var(--color-primary);
+        }
+        &:active {
+          cursor: grabbing;
+          color: var(--color-primary);
+        }
       }
     }
   }

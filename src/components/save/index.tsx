@@ -34,7 +34,7 @@ export default function Save() {
   return (
     <div className={style.save}>
       <div className={style.save__heading}>
-        <p>Save Playlist to Spotify</p>
+        <p>Save Your Tunes</p>
         <Import size={16} />
       </div>
       {!session && (

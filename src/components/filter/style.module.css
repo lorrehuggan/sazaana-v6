@@ -67,7 +67,7 @@
       font-size: var(--font-2xs);
       font-weight: 700;
       text-transform: uppercase;
-      color: var(--color-muted);
+      color: var(--color-muted-dark);
     }
   }
 }

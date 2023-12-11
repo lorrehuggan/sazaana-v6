@@ -73,7 +73,11 @@ export default function Tracks() {
                       <li
                         {...provided.draggableProps}
                         ref={provided.innerRef}
-                        className={style.tracks__song}
+                        className={clsx(style.tracks__song, {
+                          [style.tracks__dragging]:
+                            draggingID !== track.track.id &&
+                            draggingID !== null,
+                        })}
                       >
                         <img
                           src={track.track.album.images[2].url}
@@ -82,17 +86,24 @@ export default function Tracks() {
                         <div className={style.tracks__song_details}>
                           <p>{track.track.name}</p>
                           <div>
-                            {!track.track.explicit && (
+                            {track.track.explicit && (
                               <div className={style.tracks__song_explicit}>
                                 <p>E</p>
                               </div>
                             )}
-                            {track.track.artists.map((artist, index, array) => (
-                              <span key={artist.id}>
-                                {artist.name}
-                                {index < array.length - 1 ? ', ' : ''}
-                              </span>
-                            ))}
+                            {track.track.artists
+                              .slice(0, 3)
+                              .map((artist, index, array) => (
+                                <Link
+                                  href={`/tracks/${artist.id}`}
+                                  key={artist.id}
+                                >
+                                  <span>
+                                    {artist.name}
+                                    {index < array.length - 1 ? ', ' : ''}
+                                  </span>
+                                </Link>
+                              ))}
                           </div>
                         </div>
                         <div className={style.tracks__song_album}>
