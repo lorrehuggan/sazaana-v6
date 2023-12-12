@@ -12,7 +12,6 @@ export default function Navigation() {
           width="50"
           height="50"
           alt="logo"
-          objectFit="cover"
         />
       </div>
       <Authentication />

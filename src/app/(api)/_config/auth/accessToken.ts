@@ -9,8 +9,6 @@ export async function accessToken() {
     return session.accessToken;
   }
 
-  console.log({ session });
-
   try {
     const requestAuthResponse = await fetch(env.SPOTIFY_REFRESH_TOKEN_URL, {
       method: 'POST',

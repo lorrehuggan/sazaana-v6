@@ -38,6 +38,10 @@
   &__dragging {
     opacity: 0.2;
   }
+  &__dragged {
+    background-color: var(--color-muted-darker);
+    border-bottom: 1px solid var(--color-muted-dark);
+  }
   &__song {
     display: grid;
     grid-template-columns: 50px 1fr 1fr 30px;
@@ -86,13 +90,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 18px;
-      width: 18px;
+      height: 16px;
+      width: 16px;
       background-color: var(--color-muted);
       border-radius: 2px;
       & p {
-        font-size: var(--font-2xs);
-        font-weight: 600;
+        font-size: 0.5rem;
+        font-weight: 900;
         color: var(--color-fg) !important;
         line-height: 1;
       }

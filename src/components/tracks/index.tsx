@@ -77,6 +77,9 @@ export default function Tracks() {
                           [style.tracks__dragging]:
                             draggingID !== track.track.id &&
                             draggingID !== null,
+                          [style.tracks__dragged]:
+                            draggingID !== null &&
+                            draggingID === track.track.id,
                         })}
                       >
                         <img

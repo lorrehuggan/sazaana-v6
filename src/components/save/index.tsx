@@ -51,7 +51,7 @@ export default function Save() {
             placeholder="Playlist name"
           />
           <button type="submit" disabled={isPending}>
-            {isPending ? 'Saving...' : 'Save'}
+            {isPending ? 'Saving...' : 'Save Playlist'}
           </button>
           {errors.name && <p>{errors.name.message}</p>}
         </form>
