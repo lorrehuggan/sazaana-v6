@@ -1,0 +1,17 @@
+.loading {
+  margin-top: var(--space-sm);
+  &__image_placeholder {
+    width: var(--space-xl);
+    height: var(--space-xl);
+    border-radius: var(--space-2xs);
+    background-color: var(--color-muted);
+    @media (width >= 768px) {
+      width: var(--space-2xl);
+      height: var(--space-2xl);
+    }
+  }
+  & p {
+    margin-top: var(--space-3xs);
+    font-size: var(--font-xs);
+  }
+}
