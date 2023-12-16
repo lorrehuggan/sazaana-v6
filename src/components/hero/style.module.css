@@ -10,27 +10,7 @@
 
     & span {
       display: inline-block;
-      background-size: 100% 100%;
-      background-position:
-        0px 0px,
-        0px 0px,
-        0px 0px,
-        0px 0px,
-        0px 0px;
-      background-image: radial-gradient(
-          49% 81% at 45% 47%,
-          #ffe20345 0%,
-          #073aff00 100%
-        ),
-        radial-gradient(113% 91% at 17% -2%, #ff0049ff 1%, #ff000000 99%),
-        radial-gradient(142% 91% at 83% 7%, #ffdb00ff 1%, #ff000000 99%),
-        radial-gradient(142% 91% at -6% 74%, #ff0049ff 1%, #ff000000 99%),
-        radial-gradient(142% 91% at 111% 84%, #ff7000ff 0%, #ff0000ff 100%);
-      -webkit-background-clip: text;
-      -moz-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      -moz-text-fill-color: transparent;
+      color: var(--color-primary);
     }
   }
 
