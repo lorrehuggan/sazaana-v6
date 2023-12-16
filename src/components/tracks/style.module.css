@@ -111,8 +111,8 @@
       align-items: center;
       & p {
         font-size: var(--font-xs);
-        font-weight: 600;
         overflow: hidden;
+        font-weight: 600;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
