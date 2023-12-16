@@ -16,10 +16,10 @@ export default function Filter() {
   const [value, setValue] = useState(['', [0, 1]]);
 
   const attribute = {
-    acousticness: ['Cyber Strings', 'Earth Tunes'],
-    danceability: ['Rigid Robotica', 'Groove Grove'],
-    energy: ['Serenity Stream', 'Volcano Vibe'],
-    valence: ['Mellow Shadows', 'Sunshine Melody'],
+    acousticness: ['Cyber', 'Earth'],
+    danceability: ['Robotica', 'Groove'],
+    energy: ['Serenity', 'Volcano'],
+    valence: ['Shadows', 'Sunshine'],
   };
 
   const filters = useMemo(() => {
@@ -44,15 +44,14 @@ export default function Filter() {
         <p>Track filters</p>
         <FilterIcon size={14} />
       </div>
-      <div className={style.filter__sort}>
-        <Toggle.Root className="Toggle" aria-label="Toggle danceability">
-          <Move size={16} />
-        </Toggle.Root>
-      </div>
-      <form>
+      <form className={style.filter__form}>
         {filters.map((filter) => (
-          <div key={filter}>
-            <label htmlFor={filter}>{filter}</label>
+          <div className={style.filter__form__container} key={filter}>
+            <div className={style.filter__form__label}>
+              <p>{filter}</p>
+              <small>{`${filterConfig[filter][0] * 100}% ${filterConfig[filter][1] * 100
+                }%`}</small>
+            </div>
             <Slider.Root
               minStepsBetweenThumbs={5}
               className="SliderRoot"

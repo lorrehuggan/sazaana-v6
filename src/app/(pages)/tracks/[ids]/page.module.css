@@ -2,4 +2,8 @@
   display: flex;
   gap: var(--space-sm);
   margin-top: var(--space-sm);
+  flex-direction: column;
+  @media (width >= 992px) {
+    flex-direction: row;
+  }
 }

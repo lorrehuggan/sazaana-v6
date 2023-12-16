@@ -80,6 +80,11 @@
           color: var(--color-muted);
           font-weight: 600;
           cursor: pointer;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+
           &:hover {
             color: var(--color-primary);
           }

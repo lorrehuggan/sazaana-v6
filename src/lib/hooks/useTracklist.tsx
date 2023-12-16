@@ -4,7 +4,6 @@ import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useTracklistStore } from '~/store/tracklist';
 import { AudioFeatures } from '../../../types';
-import { standardizeData } from '../miscellaneous';
 import { useTracklistQuery } from '../queries/spotify';
 
 export default function useTracklist() {
@@ -36,34 +35,6 @@ export default function useTracklist() {
       [feature]: [min, max],
     }));
   }
-
-  useEffect(() => {
-    if (!data) {
-      return;
-    }
-    if (
-      Object.values(filterConfig).every(([min, max]) => min === 0 && max === 1)
-    ) {
-      set(data);
-    } else {
-      const updatedFilteredTracks = data.filter((track) => {
-        const standardizedTrack = standardizeData(track.audioFeatures);
-        const passesFilter =
-          standardizedTrack.acousticness >= filterConfig.acousticness[0] &&
-          standardizedTrack.acousticness <= filterConfig.acousticness[1] &&
-          standardizedTrack.danceability >= filterConfig.danceability[0] &&
-          standardizedTrack.danceability <= filterConfig.danceability[1] &&
-          standardizedTrack.energy >= filterConfig.energy[0] &&
-          standardizedTrack.energy <= filterConfig.energy[1] &&
-          standardizedTrack.valence >= filterConfig.valence[0] &&
-          standardizedTrack.valence <= filterConfig.valence[1];
-
-        return passesFilter;
-      });
-      set(updatedFilteredTracks);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filterConfig]);
 
   return {
     add,

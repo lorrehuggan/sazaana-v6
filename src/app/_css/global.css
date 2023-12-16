@@ -79,6 +79,28 @@ html {
   color: var(--color-fg);
 }
 
+html,
+body {
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      hsl(0, 3%, 90%) 50%,
+      transparent 100%
+    );
+    border-radius: var(--border-radius);
+    cursor: grab;
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}
+
 .container {
   max-width: 1210px;
   margin-left: auto;

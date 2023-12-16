@@ -27,7 +27,7 @@
     }
   }
   &:hover {
-    background-color: #3dd760;
+    background-color: var(--color-primary);
     & svg {
       fill: var(--color-bg);
     }
@@ -38,13 +38,13 @@
   & svg {
     width: 20px;
     height: 20px;
-    fill: #3dd760;
+    fill: var(--color-primary);
     transition: all 0.3s ease-in-sine;
   }
   & span {
     font-size: var(--font-xs);
     font-weight: 900;
-    color: #3dd760;
+    color: var(--color-primary);
   }
 }
 
@@ -70,7 +70,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: var(--color-fg);
     text-transform: uppercase;
     font-size: 15px;
     line-height: 1;
